@@ -1,12 +1,14 @@
+/* Base global do site. */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f4f4f4;
+    color: #222;
 }
 
-/* Hero Section */
+/* Hero da pagina inicial. */
 .hero-section {
-    background-color: #5a0000; /* fallback sólido — garante que NUNCA fique cinza */
+    background-color: #5a0000;
     background-image: linear-gradient(160deg, rgba(90, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.90) 100%),
                       url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1400&q=80');
     background-size: cover;
@@ -16,24 +18,246 @@ body {
     padding: 100px 20px;
 }
 
-/* Cardápio */
+/* Estrutura geral do cardapio. */
 main {
     padding: 20px;
 }
 
+.cardapio-page {
+    background: #f7f7f5;
+}
+
+.cardapio-title,
+.preco-cardapio {
+    color: #8b0000;
+}
+
+.cardapio-divider {
+    border-color: #8b0000;
+    border-width: 2px;
+    margin: 0 auto;
+    width: 60px;
+}
+
+/* Botoes de filtro por categoria. */
+.filtro-btn {
+    background: transparent;
+    border: 2px solid #8b0000;
+    border-radius: 20px;
+    color: #8b0000;
+    min-width: 98px;
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+    background: #8b0000;
+    color: #fff;
+}
+
+/* Cards individuais dos pratos. */
+.menu-card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.cardapio-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Botoes principais usados no cardapio e no pedido. */
+.btn-adicionar,
+.btn-confirmar {
+    background-color: #8b0000;
+    border-color: #8b0000;
+}
+
+.btn-adicionar:hover,
+.btn-confirmar:hover {
+    background-color: #a71414;
+    border-color: #a71414;
+    color: #fff;
+}
+
+.btn-confirmar:disabled {
+    background-color: #b9b9b9;
+    border-color: #b9b9b9;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+/* Painel lateral da lista do pedido. */
+.pedido-panel {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    top: 20px;
+}
+
+.pedido-eyebrow {
+    color: #0b6b50;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.pedido-contador {
+    background: #eef7f3;
+    border-radius: 999px;
+    color: #0b6b50;
+    display: inline-flex;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    white-space: nowrap;
+}
+
+/* Estado exibido quando o cliente ainda nao adicionou pratos. */
+.pedido-vazio {
+    align-items: center;
+    background: #f7f7f5;
+    border: 1px dashed #c9c9c9;
+    border-radius: 8px;
+    color: #666;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    min-height: 92px;
+    padding: 16px;
+    text-align: center;
+}
+
+.pedido-vazio i {
+    color: #8b0000;
+    font-size: 1.5rem;
+}
+
+/* Itens escolhidos pelo cliente. */
+.pedido-itens {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pedido-item {
+    border: 1px solid #ececec;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.pedido-item-topo {
+    align-items: flex-start;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.pedido-item-nome {
+    font-weight: 700;
+    margin: 0;
+}
+
+.pedido-item-categoria {
+    color: #777;
+    font-size: 0.78rem;
+    margin: 2px 0 0;
+}
+
+.pedido-item-subtotal {
+    color: #8b0000;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Controles de quantidade e remocao. */
+.pedido-quantidade {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.pedido-quantidade button {
+    align-items: center;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 32px;
+    justify-content: center;
+    padding: 0;
+    width: 32px;
+}
+
+.pedido-quantidade span {
+    font-weight: 700;
+    min-width: 28px;
+    text-align: center;
+}
+
+.pedido-remover {
+    margin-left: auto;
+}
+
+/* Resumo de valores do pedido. */
+.pedido-resumo {
+    border-top: 1px solid #ececec;
+    display: grid;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 16px;
+}
+
+.pedido-resumo-linha {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pedido-total {
+    color: #8b0000;
+    font-size: 1.1rem;
+}
+
+/* Formulario de confirmacao do pedido. */
+.pedido-form {
+    margin-top: 18px;
+}
+
+.pedido-feedback {
+    color: #0b6b50;
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-height: 22px;
+}
+
+.pedido-feedback.erro {
+    color: #b00020;
+}
+
+/* Estilos antigos mantidos para paginas que ainda usam essas classes. */
 .prato {
     background: white;
     padding: 15px;
     margin: 15px 0;
     border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn-admin {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 20px;
-    background: #8B0000;
+    background: #8b0000;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -41,5 +265,26 @@ main {
 }
 
 .btn-admin:hover {
-    background: #B22222;
+    background: #b22222;
+}
+
+/* Ajustes para telas menores. */
+@media (max-width: 991.98px) {
+    .pedido-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 575.98px) {
+    main {
+        padding: 12px;
+    }
+
+    .pedido-panel {
+        padding: 18px;
+    }
+
+    .cardapio-img {
+        height: 180px;
+    }
 }

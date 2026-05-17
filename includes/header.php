@@ -1,4 +1,9 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+$usuarioLogado = isset($_SESSION['usuario_id']);
+$usuarioNome = $usuarioLogado ? $_SESSION['usuario_nome'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,13 +33,54 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/restaurante/cardapio.php"><i class="bi bi-book"></i> Cardápio</a>
                 </li>
+                <?php if ($usuarioLogado): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/restaurante/pedido.php"><i class="bi bi-bag"></i> Fazer Pedido</a>
+                    <a class="nav-link" href="/restaurante/meus_pedidos.php"><i class="bi bi-receipt"></i> Meus Pedidos</a>
                 </li>
+                <?php endif; ?>
             </ul>
-            <a href="/restaurante/admin/login.php" class="btn btn-light btn-sm fw-bold" style="color: #8B0000;">
-                <i class="bi bi-lock"></i> Admin
-            </a>
+
+            <div class="d-flex align-items-center gap-2">
+                <?php if ($usuarioLogado): ?>
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm fw-bold dropdown-toggle" style="color:#8b0000;" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i>
+                            <?php echo htmlspecialchars(explode(' ', $usuarioNome)[0]); ?>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <span class="dropdown-item-text text-muted small">
+                                    <?php echo htmlspecialchars($usuarioNome); ?>
+                                </span>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="/restaurante/meus_pedidos.php">
+                                    <i class="bi bi-receipt"></i> Meus Pedidos
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="/restaurante/usuario/logout.php">
+                                    <i class="bi bi-box-arrow-right"></i> Sair
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <a href="/restaurante/usuario/login.php" class="btn btn-light btn-sm fw-bold" style="color: #8B0000;">
+                        <i class="bi bi-person"></i> Entrar
+                    </a>
+                    <a href="/restaurante/usuario/cadastro.php" class="btn btn-outline-light btn-sm fw-bold">
+                        <i class="bi bi-person-plus"></i> Cadastrar
+                    </a>
+                <?php endif; ?>
+
+                <a href="/restaurante/admin/login.php" class="btn btn-sm fw-bold ms-1"
+                   style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);"
+                   title="Área Admin">
+                    <i class="bi bi-lock"></i>
+                </a>
+            </div>
         </div>
     </div>
 </nav>

@@ -1,6 +1,6 @@
 <?php include("includes/header.php"); ?>
 
-<!-- Hero: direto no body, sem <main> na frente -->
+<!-- Hero -->
 <section class="hero-section text-white text-center d-flex align-items-center justify-content-center">
     <div class="container">
         <p class="text-uppercase fw-bold mb-2" style="color: #ffcccc;">
@@ -12,11 +12,8 @@
         <p class="lead mb-4" style="color: #f0d0d0;">
             Pizzas artesanais e pratos especiais preparados com ingredientes frescos todos os dias.
         </p>
-        <a href="cardapio.php" class="btn btn-light btn-lg fw-bold me-2" style="color: #8B0000;">
+        <a href="cardapio.php" class="btn btn-light btn-lg fw-bold" style="color: #8B0000;">
             <i class="bi bi-book"></i> Ver Cardápio
-        </a>
-        <a href="pedido.php" class="btn btn-outline-light btn-lg fw-bold">
-            <i class="bi bi-bag"></i> Fazer Pedido
         </a>
     </div>
 </section>
